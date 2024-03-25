@@ -6,6 +6,7 @@ import Blogs from './pages/Blogs.jsx';
 import BookMarks from './pages/BookMarks.jsx';
 import MainLayout from './layouts/MainLayout.jsx';
 import Home from './pages/Home.jsx'
+import Blog from './pages/Blog.jsx';
 
 
 
@@ -21,8 +22,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/blogs',
-        loader: ()=> fetch('https://dev.to/api/articles?per_page=20&top=7'),
+        loader: () => fetch('https://dev.to/api/articles?per_page=20&top=7'),
         element: <Blogs></Blogs>
+      },
+      {
+        path: '/blog/:id',
+        loader: ({ params }) => fetch(`https://dev.to/api/articles/${params.id}`),
+        element: <Blog></Blog>
       },
       {
         path: '/bookmarks',
@@ -30,11 +36,11 @@ const router = createBrowserRouter([
       }
     ]
   }
-  
+
 ]);
 
 
-  ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router}/>
-    // <App></App>
-  )
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router} />
+  // <App></App>
+)

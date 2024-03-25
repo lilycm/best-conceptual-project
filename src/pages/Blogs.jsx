@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import Blog from "../components/BlogCard";
-
+import BlogCard from "../components/BlogCard";
 
 const Blogs = () => {
     const blogs = useLoaderData()
@@ -20,7 +19,7 @@ const Blogs = () => {
                 </a>
                 <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {
-                        blogs.map(blog=> <Blog key={blog.id} blog={blog}></Blog>)
+                        blogs.map(blog=> <BlogCard key={blog.id} blog={blog}></BlogCard>)
                     }
                 </div>
             </div>
